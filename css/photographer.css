@@ -27,13 +27,13 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 80px;
+  margin-left: 50px;
 }
 
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  margin: 0 80px;
+  margin: 0 50px;
   padding: 0px 35px;
   display: flex;
   flex-direction: row;
@@ -76,24 +76,24 @@ h1 {
 
 /* Main */
 .media-filters {
-  margin: 20px 100px;
+  margin: 20px 50px;
   font-size: 18px;
   font-weight: 700;
 }
 
 .media-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 350px 350px 350px);
-  grid-template-rows: repeat(auto-fill, 300px 300px 300px);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 30% 30% 30%);
+  grid-template-rows: repeat(auto-fill, 300px 300px 300px 300px);
   max-height: 350px;
-  gap: 20px;
-  margin: 20px 80px;
+  gap: 70px;
+  margin: 40px 50px;
 }
 .media-gallery img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
   border-radius: 5px;
   overflow-y: hidden;
 }
@@ -101,7 +101,6 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
   border-radius: 5px;
   overflow-y: hidden;
 }
@@ -136,11 +135,7 @@ h1 {
   text-align: center;
 }
 
-.contact_button:hover {
-  background-color: #d3573c;
-  color: black;
-}
-
+.contact_button:hover,
 .contact_button:focus {
   background-color: #d3573c;
   color: black;
@@ -174,6 +169,22 @@ h1 {
 
 .modal header img {
   cursor: pointer;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 form {

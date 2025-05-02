@@ -35,25 +35,33 @@
       <div class="price">prix</div>
     </div>
     <div id="contact_modal">
-      <div class="modal">
+      <div class="modal" role="dialog" aria-labelledby="Contact-me">
         <header>
           <h2>Contactez-moi</h2>
           <img class="close" src="assets/icons/close.svg" alt="Close modal"
           title="Close modal"" />
         </header>
         <form>
-          <div>
-            <label for="first">Prénom</label><br />
-            <input class="text-control" type="text" id="first" name="first" />
-          </div>
-          <div>
-            <label for="last">Nom</label><br />
-            <input class="text-control" type="text" id="last" name="last" />
-          </div>
-          <div>
-            <label for="email">E-mail</label><br />
-            <input class="text-control" type="email" id="email" name="email" />
-          </div>
+          <fieldset>
+            <legend>Coordonnées</legend>
+            <div>
+              <label for="first">Prénom</label><br />
+              <input class="text-control" type="text" id="first" name="first" />
+            </div>
+            <div>
+              <label for="last">Nom</label><br />
+              <input class="text-control" type="text" id="last" name="last" />
+            </div>
+            <div>
+              <label for="email">E-mail</label><br />
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+              />
+            </div>
+          </fieldset>
           <div class="message">
             <label for="message">Votre message</label><br />
             <input

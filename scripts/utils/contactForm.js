@@ -19,11 +19,17 @@ document.addEventListener("click", (e) => {
     displayModal();
   }
 
-  // Close button
+  // Close by click button "Close modal"
   if (e.target.matches("#contact_modal img[alt='Close modal']")) {
     closeModal();
   }
-  modal.setAttribute("aria-hidden, true ");
+  modal.setAttribute("aria-hidden", "true");
+});
+// Close modal by Escape
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeModal();
+  }
 });
 
 // Modal form submission
