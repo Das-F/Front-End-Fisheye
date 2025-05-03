@@ -29,63 +29,60 @@ function mediaTemplate(data) {
   return { getMediaCardDOM };
 }
 
-// Carousel modal
-function mediaCarouselModal(data) {
-  const { image, video, title, photographerId } = data;
+// * Carousel modal *
 
-  const mediaPath = `assets/images/${photographerId}/${image || video}`;
-
-  function getMediaModalDOM() {
-    const modalCarousel = document.createElement("div");
-    modalCarousel.classList.add("modal-carousel");
-
-    let mediaElement;
-    if (image) {
-      mediaElement = document.createElement("img");
-      mediaElement.setAttribute("src", mediaPath);
-      mediaElement.setAttribute("alt", title);
-    } else if (video) {
-      mediaElement = document.createElement("video");
-      mediaElement.setAttribute("controls", true);
-      mediaElement.setAttribute("src", mediaPath);
-    }
-
-    const titleMedia = document.createElement("h2");
-    titleMedia.textContent = title;
-
-    modalCarousel.appendChild(mediaElement);
-    modalCarousel.appendChild(titleMedia);
-
-    return modalCarousel;
-  }
-
-  return { getMediaModalDOM };
+function getPhotographerIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
 }
 
-// Carousel controls
-// $(document).keydown(function(e) {
-//   const keyCode = e.keyCode ? e.keyCode : e.which
+async function loadPhotographerData() {
+  const photographerId = parseInt(getPhotographerIdFromUrl(), 10);
+  const response = await fetch("data/photographers.json");
+  const data = await response.json();
 
-//   if (keyCode === 39) {
-//       goToNextSlide()
-//   } else if (keyCode === 37) {
-//       goToPreviousSlide()
-//   }
-// })
+  const photographer = data.photographers.find((p) => p.id === photographerId);
+  const photographerMedia = data.media.filter(
+    (m) => m.photographerId === photographerId
+  );
 
-// $carouselPauseBtn.on('click', function() {
-//   clearInterval(carouselInterval)
-// })
-// $(document).keydown(function(e) {
-//   const keyCode = e.keyCode ? e.keyCode : e.which
+  if (!photographer) {
+    console.error("Photographe non trouvé");
+    return;
+  }
+  displayMedia(photographerMedia);
+}
 
-//   if (keyCode === 39) {
-//       goToNextSlide()
-//   } else if (keyCode === 37) {
-//       goToPreviousSlide()
-//   }
-// })
+let currentMediaIndex = 0;
+let currentMediaList = [];
 
-// $carouselPauseBtn.on('click', function() {
-//   clearInterval(carouselInterval)
-// })
+function displayLightbox() {
+  const modalLightbox = document.querySelector(".lightbox");
+  modalLightbox.classList.add("active");
+  modalLightbox.style.display = "block";
+  modalLightbox.setAttribute("aria-hidden", "false");
+}
+
+function closeLightbox() {
+  const modalLightbox = document.querySelector(".lightbox");
+  modalLightbox.classList.remove("active");
+  modalLightbox.style.display = "none";
+  modalLightbox.setAttribute("aria-hidden", "true");
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("contact_button")) {
+    displayModal();
+  }
+
+  if (e.target.classList.contains("close-lightbox")) {
+    closeLightbox();
+  }
+});
+
+// Fermeture avec la touche Escape
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeLightbox();
+  }
+});

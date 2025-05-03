@@ -12,6 +12,7 @@ function displayModal() {
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
 }
 
 document.addEventListener("click", (e) => {
@@ -23,7 +24,6 @@ document.addEventListener("click", (e) => {
   if (e.target.matches("#contact_modal img[alt='Close modal']")) {
     closeModal();
   }
-  modal.setAttribute("aria-hidden", "true");
 });
 // Close modal by Escape
 document.addEventListener("keydown", function (e) {
@@ -34,8 +34,10 @@ document.addEventListener("keydown", function (e) {
 
 // Modal form submission
 const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  console.log("Données envoyées :", Object.fromEntries(formData.entries()));
-});
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    console.log("Données envoyées :", Object.fromEntries(formData.entries()));
+  });
+}
