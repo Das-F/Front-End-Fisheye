@@ -175,6 +175,30 @@ h1 {
   object-fit: cover;
   border-radius: 5px;
 }
+.media-title-likes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px;
+}
+
+.media-title-likes h3 {
+  color: #901c1c;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0px;
+  padding-right: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.media-title-likes span {
+  color: #901c1c;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0px;
+}
 
 .likes-price {
   display: flex;
