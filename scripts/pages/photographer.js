@@ -1,3 +1,4 @@
+// --------collecting data from photographer.json--------
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = parseInt(urlParams.get("id"));
 let dataPhotographer = {};
@@ -17,7 +18,7 @@ async function getPhotographerById(id) {
     return { photographer: null, media: [] };
   }
 }
-
+//-----------------Photographer data------------------//
 async function displayPhotographerData(photographers) {
   const photographersSection = document.querySelector(".photograph-header");
   photographersSection.innerHTML = "";
@@ -28,7 +29,7 @@ async function displayPhotographerData(photographers) {
     photographersSection.appendChild(userCardDOM);
   });
 }
-
+//-----------------Media data------------------//
 async function init() {
   const { photographer, media } = await getPhotographerById(photographerId);
   if (photographer) {
@@ -40,7 +41,8 @@ async function init() {
 }
 
 init();
-
+//--------------------------------------------------//
+//-----------------Media template------------------//
 function photographerTemplate(data) {
   const { name, portrait, city, country, tagline } = data;
   const picture = `assets/photographers/${portrait}`;
@@ -89,7 +91,6 @@ function photographerTemplate(data) {
 
   return { getUserCardDOM };
 }
-
 async function displayMediaData(media) {
   const mediaSection = document.querySelector(".media-gallery");
   mediaSection.innerHTML = ""; // Nettoyage
@@ -100,3 +101,105 @@ async function displayMediaData(media) {
     mediaSection.appendChild(mediaCardDOM);
   });
 }
+//--------------------------------------------------//
+//------------Calculating likes--------//
+let medias = [];
+let likeButtonsInitialized = false;
+
+function getPhotographerIdFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return parseInt(params.get("id"), 10);
+}
+
+function displayGallery(medias) {
+  const galleryContainer = document.querySelector(".media-gallery");
+  galleryContainer.innerHTML = "";
+
+  medias.forEach((media) => {
+    const mediaCard = mediaTemplate(media).getMediaCardDOM();
+
+    const likeSpan = mediaCard.querySelector(".media-likes");
+    likeSpan.dataset.id = media.id;
+
+    galleryContainer.appendChild(mediaCard);
+  });
+}
+
+function updateTotalLikes() {
+  const total = medias.reduce((sum, media) => sum + media.likes, 0);
+  const totalLikesElement = document.querySelector(".likes");
+  if (totalLikesElement) {
+    totalLikesElement.innerHTML = `${total} ♥`;
+  }
+}
+//------------Like buttons------------------//
+function setupLikeButtons() {
+  if (likeButtonsInitialized) return;
+
+  const galleryContainer = document.querySelector(".media-gallery");
+  const likedMediaIds = new Set();
+
+  galleryContainer.addEventListener("click", (e) => {
+    const likeSpan = e.target.closest(".media-likes");
+    if (!likeSpan) return;
+
+    const mediaId = parseInt(likeSpan.dataset.id, 10);
+
+    // Already liked
+    if (likedMediaIds.has(mediaId)) return;
+
+    const media = medias.find((m) => m.id === mediaId);
+    if (media) {
+      media.likes += 1;
+      likeSpan.textContent = `${media.likes} ♥`;
+      updateTotalLikes();
+      likedMediaIds.add(mediaId);
+    }
+  });
+  likeButtonsInitialized = true;
+}
+
+//------------Fetching data from JSON--------------//
+fetch("data/photographers.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const photographerId = getPhotographerIdFromURL();
+
+    // Ne garder que les médias du photographe courant
+    medias = data.media.filter((m) => m.photographerId === photographerId);
+
+    displayGallery(medias);
+    setupLikeButtons();
+    updateTotalLikes();
+  });
+//------------------------------------------------//
+//------------Photographer price---------------//
+function getPhotographerIdFromURL() {
+  return parseInt(new URLSearchParams(window.location.search).get("id"), 10);
+}
+
+function displayPhotographerPrice(price) {
+  const priceElement = document.querySelector(".price");
+  if (priceElement) {
+    priceElement.textContent = `${price} €/jour`;
+  }
+}
+
+fetch("data/photographers.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const photographerId = getPhotographerIdFromURL();
+    const currentPhotographer = data.photographers.find(
+      (p) => p.id === photographerId
+    );
+    const medias = data.media.filter(
+      (m) => m.photographerId === photographerId
+    );
+    displayGallery(medias);
+    setupLikeButtons();
+    updateTotalLikes();
+
+    if (currentPhotographer) {
+      displayPhotographerPrice(currentPhotographer.price);
+    }
+  });

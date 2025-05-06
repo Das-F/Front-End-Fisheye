@@ -76,9 +76,47 @@ h1 {
 
 /* Main */
 .media-filters {
+  display: flex;
   margin: 20px 50px;
   font-size: 18px;
   font-weight: 700;
+}
+.media-filters h4 {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0px 20px;
+  padding: 10px 20px;
+  background-color: #901c1c;
+  color: white;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter:hover,
+.filter:focus {
+  background-color: #d3573c;
+  color: black;
+}
+
+.menu {
+  margin: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.separator {
+  width: 150px;
+  height: 0px;
+  background-color: #ffffff;
 }
 
 .media-gallery {
@@ -88,7 +126,7 @@ h1 {
   grid-template-rows: repeat(auto-fill, 300px 300px 300px 300px);
   max-height: 350px;
   gap: 70px;
-  margin: 40px 50px;
+  margin: 40px 60px;
 }
 .media-gallery img {
   width: 100%;
@@ -198,6 +236,25 @@ h1 {
   font-size: 24px;
   font-weight: 500;
   margin: 0px;
+  cursor: pointer;
+}
+
+.media-likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.media-likes .like-number {
+  font-size: 24px;
+  font-weight: 500;
+  color: #901c1c;
+}
+
+.media-likes .like-icon {
+  font-size: 24px;
+  color: #901c1c;
+  line-height: 1;
 }
 
 .likes-price {

@@ -24,7 +24,42 @@
     <main id="main">
       <div class="photograph-header"></div>
     </main>
-    <div class="media-filters">Trier par</div>
+    <div class="media-filters">
+      <h4>Trier par</h4>
+      <div
+        class="filter"
+        role="listbox"
+        id="listbox1"
+        aria-activedescendant="listbox1-1"
+        aria-labelledby="filter-label"
+      >
+        <div id="filter-label" class="filter-label"></div>
+        <div class="menu" role="option" id="listbox1-1" tabindex="0">
+          Popularité
+        </div>
+        <hr class="separator" aria-hidden="true" />
+        <div class="menu" role="option" id="listbox1-2" tabindex="0">Date</div>
+        <hr class="separator" aria-hidden="true" />
+        <div class="menu" role="option" id="listbox1-3" tabindex="0">Titre</div>
+      </div>
+      <button
+        id="toggle-button"
+        class="toggle-button"
+        aria-pressed="false"
+        aria-label="Toggle sorting order"
+      >
+        <img
+          src="assets/icons/arrow-up.svg"
+          alt="Sort ascending"
+          class="arrow-up"
+        />
+        <img
+          src="assets/icons/arrow-down.svg"
+          alt="Sort descending"
+          class="arrow-down"
+        />
+      </button>
+    </div>
     <div class="media-gallery">
       <a href="javascript:void(0)" class="gallery" aria-label="Open gallery"
         >Open gallery</a
@@ -54,8 +89,8 @@
       <div class="lightbox-container"></div>
     </div>
     <div class="likes-price">
-      <div class="likes">likes</div>
-      <div class="price">prix</div>
+      <div class="likes"></div>
+      <div class="price"></div>
     </div>
     <div id="contact_modal">
       <div class="modal" role="dialog" aria-labelledby="Contact-me">
@@ -101,5 +136,6 @@
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/templates/media.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>
