@@ -1,13 +1,15 @@
-function mediaTemplate(data) {
-  const { image, video, title, likes, photographerId } = data;
+function mediaTemplate(data, index) {
+  const { image, video, title, date, likes, photographerId } = data;
 
   const mediaPath = `assets/images/${photographerId}/${image || video}`;
-
+  console.log(index);
   function getMediaCardDOM() {
-    const galleryLink = document.createElement("a");
+    const galleryLink = document.createElement("div");
     galleryLink.classList.add("gallery");
-    galleryLink.setAttribute("href", "#");
     galleryLink.setAttribute("aria-label", title);
+    galleryLink.setAttribute("tabindex", "0");
+    galleryLink.setAttribute("role", "button");
+    galleryLink.setAttribute("data-index", index);
 
     let mediaElement;
     if (image) {
@@ -20,6 +22,9 @@ function mediaTemplate(data) {
       mediaElement.setAttribute("controls", true);
       mediaElement.setAttribute("src", mediaPath);
     }
+    mediaElement.addEventListener("click", function () {
+      openLightbox(index);
+    });
 
     mediaElement.classList.add("media-thumb");
     galleryLink.appendChild(mediaElement);
@@ -51,8 +56,37 @@ function mediaTemplate(data) {
     mediaCard.appendChild(mediaTitleAndLikes);
 
     return mediaCard;
-    // return galleryLink;
   }
 
   return { getMediaCardDOM };
 }
+
+// -------------------Sorting------------------//
+
+// function getPhotographerIdFromUrl() {
+//   const params = new URLSearchParams(window.location.search);
+//   return parseInt(params.get("id"));
+// }
+// async function fetchPhotographersData() {
+//   const response = await fetch("data/photographers.json");
+//   return await response.json();
+// }
+
+// const response = await fetchPhotographersData();
+// const data = await response.json();
+// const photographerId = getPhotographerIdFromUrl();
+// const photographer = data.photographers.find(
+//   (photographer) => photographer.id === photographerId
+// );
+// const media = data.media.filter(
+//   (media) => media.photographerId === photographerId
+// );
+
+// const buttonSortPopular = document.querySelector(".listbox1-1");
+// buttonSortPopular.addEventListener("click", function () {
+//   const PopularMedia = Array.from(likes);
+//   PopularMedia.sort(function (a, b) {
+//     return b.likes - a.likes;
+//   });
+//   console.log("clickedPopular");
+// });

@@ -25,40 +25,65 @@
       <div class="photograph-header"></div>
     </main>
     <div class="media-filters">
-      <h4>Trier par</h4>
+      <h4 id="filter-label">Trier par</h4>
       <div
         class="filter"
         role="listbox"
         id="listbox1"
-        aria-activedescendant="listbox1-1"
         aria-labelledby="filter-label"
+        aria-activedescendant="listbox1-1"
+        tabindex="0"
+        title="Options de tri"
       >
-        <div id="filter-label" class="filter-label"></div>
-        <div class="menu" role="option" id="listbox1-1" tabindex="0">
-          Popularité
+        <div class="pop-and-toggle">
+          <button
+            class="menu"
+            role="option"
+            id="listbox1-1"
+            aria-selected="true"
+            tabindex="0"
+          >
+            Popularité
+          </button>
+          <button
+            id="toggle-button"
+            class="toggle-button"
+            aria-pressed="false"
+            aria-label="Changer l'ordre du tri"
+          >
+            <img
+              src="assets/icons/arrow-up.svg"
+              alt="Replier le menu"
+              class="arrow-up"
+            />
+            <img
+              src="assets/icons/arrow-down.svg"
+              alt="Déplier le menu"
+              class="arrow-down"
+            />
+          </button>
         </div>
         <hr class="separator" aria-hidden="true" />
-        <div class="menu" role="option" id="listbox1-2" tabindex="0">Date</div>
+        <div
+          class="menu"
+          role="option"
+          id="listbox1-2"
+          tabindex="0"
+          aria-label="Ordered by Date"
+        >
+          Date
+        </div>
         <hr class="separator" aria-hidden="true" />
-        <div class="menu" role="option" id="listbox1-3" tabindex="0">Titre</div>
+        <div
+          class="menu"
+          role="option"
+          id="listbox1-3"
+          tabindex="0"
+          aria-label="ordered by Title"
+        >
+          Titre
+        </div>
       </div>
-      <button
-        id="toggle-button"
-        class="toggle-button"
-        aria-pressed="false"
-        aria-label="Toggle sorting order"
-      >
-        <img
-          src="assets/icons/arrow-up.svg"
-          alt="Sort ascending"
-          class="arrow-up"
-        />
-        <img
-          src="assets/icons/arrow-down.svg"
-          alt="Sort descending"
-          class="arrow-down"
-        />
-      </button>
     </div>
     <div class="media-gallery">
       <a href="javascript:void(0)" class="gallery" aria-label="Open gallery"
@@ -74,16 +99,19 @@
       <img
         class="close-lightbox"
         src="assets/icons/carousel-close.svg"
+        alt="Close dialog"
         aria-label="Close dialog"
       />
       <img
         class="prev-lightbox"
         src="assets/icons/prev-arrow.svg"
+        alt="Previous image"
         aria-label="Previous image"
       />
       <img
         class="next-lightbox"
         src="assets/icons/next-arrow.svg"
+        alt="Next image"
         aria-label="Next image"
       />
       <div class="lightbox-container"></div>
@@ -93,33 +121,30 @@
       <div class="price"></div>
     </div>
     <div id="contact_modal">
-      <div class="modal" role="dialog" aria-labelledby="Contact-me">
+      <div class="modal" role="dialog" aria-label="Contact-me">
         <header>
           <h2>Contactez-moi</h2>
-          <img class="close" src="assets/icons/close.svg" alt="Close modal"
-          title="Close modal"" />
+          <img
+            class="close"
+            src="assets/icons/close.svg"
+            alt="Close modal"
+            title="Close modal"
+          />
         </header>
         <form>
-          <fieldset>
-            <legend>Coordonnées</legend>
-            <div>
-              <label for="first">Prénom</label><br />
-              <input class="text-control" type="text" id="first" name="first" />
-            </div>
-            <div>
-              <label for="last">Nom</label><br />
-              <input class="text-control" type="text" id="last" name="last" />
-            </div>
-            <div>
-              <label for="email">E-mail</label><br />
-              <input
-                class="text-control"
-                type="email"
-                id="email"
-                name="email"
-              />
-            </div>
-          </fieldset>
+          <div>
+            <label for="first">Prénom</label><br />
+            <input class="text-control" type="text" id="first" name="first" />
+          </div>
+          <div>
+            <label for="last">Nom</label><br />
+            <input class="text-control" type="text" id="last" name="last" />
+          </div>
+          <div>
+            <label for="email">E-mail</label><br />
+            <input class="text-control" type="email" id="email" name="email" />
+          </div>
+
           <div class="message">
             <label for="message">Votre message</label><br />
             <input

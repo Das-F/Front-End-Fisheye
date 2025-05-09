@@ -2,6 +2,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = parseInt(urlParams.get("id"));
 let dataPhotographer = {};
+let allMedias = [];
 async function getPhotographerById(id) {
   try {
     const response = await fetch("/data/photographers.json");
@@ -9,6 +10,7 @@ async function getPhotographerById(id) {
 
     const photographer = data.photographers.find((p) => p.id === id);
     dataPhotographer = photographer;
+    allMedias = data.media.filter((m) => m.photographerId === id);
     return {
       photographer,
       media: data.media.filter((m) => m.photographerId === id),
@@ -67,12 +69,12 @@ function photographerTemplate(data) {
     photographerInfo.appendChild(h3);
     photographerInfo.appendChild(h4);
 
-    const contactButton = document.createElement("div");
+    const contactButton = document.createElement("button");
     contactButton.classList.add("contact_button");
     contactButton.textContent = "Contactez-moi";
     contactButton.setAttribute("aria-label", "Contact me");
     contactButton.setAttribute("onclick", "displayModal()");
-
+    contactButton.setAttribute("tabindex", "0");
     const imgContainer = document.createElement("div");
     imgContainer.classList.add("img-container");
 
@@ -93,10 +95,11 @@ function photographerTemplate(data) {
 }
 async function displayMediaData(media) {
   const mediaSection = document.querySelector(".media-gallery");
-  mediaSection.innerHTML = ""; // Nettoyage
+  mediaSection.innerHTML = "";
 
-  media.forEach((mediaItem) => {
-    const mediaCard = mediaTemplate(mediaItem);
+  media.forEach((mediaItem, index) => {
+    const mediaCard = mediaTemplate(mediaItem, index);
+    console.log(index);
     const mediaCardDOM = mediaCard.getMediaCardDOM();
     mediaSection.appendChild(mediaCardDOM);
   });
@@ -115,8 +118,8 @@ function displayGallery(medias) {
   const galleryContainer = document.querySelector(".media-gallery");
   galleryContainer.innerHTML = "";
 
-  medias.forEach((media) => {
-    const mediaCard = mediaTemplate(media).getMediaCardDOM();
+  medias.forEach((media, index) => {
+    const mediaCard = mediaTemplate(media, index).getMediaCardDOM();
 
     const likeSpan = mediaCard.querySelector(".media-likes");
     likeSpan.dataset.id = media.id;
@@ -152,6 +155,7 @@ function setupLikeButtons() {
     if (media) {
       media.likes += 1;
       likeSpan.textContent = `${media.likes} ♥`;
+      likeSpann.setAttribute("aria-label", `likes : ${media.likes} likes`);
       updateTotalLikes();
       likedMediaIds.add(mediaId);
     }
@@ -182,6 +186,7 @@ function displayPhotographerPrice(price) {
   const priceElement = document.querySelector(".price");
   if (priceElement) {
     priceElement.textContent = `${price} €/jour`;
+    priceElement.setAttribute("aria-label", `Prix : ${price} euros par jour`);
   }
 }
 

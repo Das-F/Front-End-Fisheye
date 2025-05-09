@@ -1,7 +1,6 @@
 #contact_modal {
   display: none;
 }
-@import url("photographer.css");
 
 body {
   font-family: "DM Sans", sans-serif;
@@ -99,6 +98,7 @@ h1 {
   width: 150px;
   border-radius: 5px;
   cursor: pointer;
+  z-index: 900;
 }
 
 .filter:hover,
@@ -119,6 +119,48 @@ h1 {
   background-color: #ffffff;
 }
 
+.pop-and-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#listbox1-1 {
+  background-color: #901c1c;
+  color: white;
+  border: none;
+  width: 100px;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+#listbox1-1:hover {
+  background-color: #d3573c;
+  color: black;
+}
+
+#toggle-button {
+  display: flex;
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  margin-top: -10px;
+}
+
+.arrow-up,
+.arrow-down {
+  width: 50px;
+  height: 50px;
+}
+
+.arrow-up {
+  display: none;
+}
+
 .media-gallery {
   display: grid;
   justify-content: center;
@@ -126,7 +168,7 @@ h1 {
   grid-template-rows: repeat(auto-fill, 300px 300px 300px 300px);
   max-height: 350px;
   gap: 70px;
-  margin: 40px 60px;
+  margin: -95px 60px 40px 60px;
 }
 .media-gallery img {
   width: 100%;
@@ -144,7 +186,7 @@ h1 {
 }
 /* Lightbox */
 .lightbox {
-  display: flex;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -154,6 +196,9 @@ h1 {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+.lightbox.active {
+  display: flex;
 }
 
 .close-lightbox {
@@ -285,6 +330,9 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .contact_button:hover,
@@ -321,22 +369,6 @@ h1 {
 
 .modal header img {
   cursor: pointer;
-}
-
-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-legend {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
 }
 
 form {
