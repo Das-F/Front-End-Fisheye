@@ -160,30 +160,35 @@ h1 {
 .arrow-up {
   display: none;
 }
+.media-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .media-gallery {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 30% 30% 30%);
   grid-template-rows: repeat(auto-fill, 300px 300px 300px 300px);
-  max-height: 350px;
-  gap: 70px;
+  gap: 60px;
   margin: -95px 60px 40px 60px;
 }
-.media-gallery img {
+
+.media-thumb {
   width: 100%;
-  height: 100%;
+  height: 300px;
   object-fit: cover;
+  object-position: center;
   border-radius: 5px;
-  overflow-y: hidden;
 }
-.media-gallery video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-  overflow-y: hidden;
+
+.gallery {
+  width: 320px;
+  height: 300px;
 }
+
 /* Lightbox */
 .lightbox {
   display: none;
@@ -208,11 +213,11 @@ h1 {
   color: #901c1c;
   border: none;
   width: 50px;
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1002;
   cursor: pointer;
+  display: none;
 }
 
 .next-lightbox,
@@ -229,6 +234,7 @@ h1 {
   z-index: 1001;
   cursor: pointer;
   transition: 0.3s;
+  display: none;
 }
 .prev-lightbox {
   left: 30px;
@@ -263,14 +269,16 @@ h1 {
   justify-content: space-between;
   align-items: center;
   margin: 0px;
+  width: 98%;
 }
 
 .media-title-likes h3 {
   color: #901c1c;
   font-size: 24px;
   font-weight: 400;
-  margin: 0px;
+  margin: 8px 0px;
   padding-right: 20px;
+  max-width: 240px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

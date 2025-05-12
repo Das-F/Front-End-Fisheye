@@ -48,7 +48,6 @@ function mediaTemplate(data, index) {
     mediaTitleAndLikes.appendChild(mediaTitle);
     mediaTitleAndLikes.appendChild(mediaLikes);
 
-    // Conteneur global (article)
     const mediaCard = document.createElement("article");
     mediaCard.classList.add("media-card");
 
@@ -61,32 +60,11 @@ function mediaTemplate(data, index) {
   return { getMediaCardDOM };
 }
 
-// -------------------Sorting------------------//
-
-// function getPhotographerIdFromUrl() {
-//   const params = new URLSearchParams(window.location.search);
-//   return parseInt(params.get("id"));
+// function additionLikes(mediaId) {
+//   const mediaLikes = document.querySelector(
+//     `.media-likes[data-id="${mediaId}"]`
+//   );
+//   const likeNumber = mediaLikes.querySelector(".like-number");
+//   const currentLikes = parseInt(likeNumber.textContent, 10);
+//   likeNumber.textContent = currentLikes + 1;
 // }
-// async function fetchPhotographersData() {
-//   const response = await fetch("data/photographers.json");
-//   return await response.json();
-// }
-
-// const response = await fetchPhotographersData();
-// const data = await response.json();
-// const photographerId = getPhotographerIdFromUrl();
-// const photographer = data.photographers.find(
-//   (photographer) => photographer.id === photographerId
-// );
-// const media = data.media.filter(
-//   (media) => media.photographerId === photographerId
-// );
-
-// const buttonSortPopular = document.querySelector(".listbox1-1");
-// buttonSortPopular.addEventListener("click", function () {
-//   const PopularMedia = Array.from(likes);
-//   PopularMedia.sort(function (a, b) {
-//     return b.likes - a.likes;
-//   });
-//   console.log("clickedPopular");
-// });
