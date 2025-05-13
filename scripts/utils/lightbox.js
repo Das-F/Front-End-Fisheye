@@ -24,58 +24,14 @@ function openLightbox(index) {
   closeButton.addEventListener("click", closeLightbox);
 }
 
-// function getPhotographerIdFromUrl() {
-//   const params = new URLSearchParams(window.location.search);
-//   return params.get("id");
-// }
-
-// async function loadPhotographerData() {
-//   const photographerId = parseInt(getPhotographerIdFromUrl(), 10);
-//   const response = await fetch("data/photographers.json");
-//   const data = await response.json();
-
-//   const photographer = data.photographers.find((p) => p.id === photographerId);
-//   const photographerMedia = data.media.filter(
-//     (m) => m.photographerId === photographerId
-//   );
-
-//   if (!photographer) {
-//     console.error("Photographe non trouvé");
-//     return;
-//   }
-//   displayMedia(photographerMedia);
-// }
-
-// let currentMediaIndex = 0;
-// let currentMediaList = [];
-
-// function displayLightbox() {
-//   const modalLightbox = document.querySelector(".lightbox");
-//   modalLightbox.classList.add("active");
-//   modalLightbox.style.display = "block";
-//   modalLightbox.setAttribute("aria-hidden", "false");
-// }
-
 function closeLightbox() {
   const modalLightbox = document.querySelector(".lightbox");
   modalLightbox.classList.remove("active");
   modalLightbox.style.display = "none";
   modalLightbox.setAttribute("aria-hidden", "true");
 }
-
-// document.addEventListener("click", (e) => {
-//   if (e.target.classList.contains("lightbox")) {
-//     displayLightbox();
-//   }
-
-//   if (e.target.classList.contains("close-lightbox")) {
-//     closeLightbox();
-//   }
-// });
-
-// // Fermeture avec la touche Escape
-// document.addEventListener("keydown", function (e) {
-//   if (e.key === "Escape") {
-//     closeLightbox();
-//   }
-// });
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeLightbox();
+  }
+});

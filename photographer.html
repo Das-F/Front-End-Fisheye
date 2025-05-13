@@ -27,63 +27,15 @@
     <div class="media-filters">
       <h4 id="filter-label">Trier par</h4>
       <div
-        class="filter"
-        role="listbox"
-        id="listbox1"
-        aria-labelledby="filter-label"
-        aria-activedescendant="listbox1-1"
-        tabindex="0"
-        title="Options de tri"
-      >
-        <div class="pop-and-toggle">
-          <button
-            class="menu"
-            role="option"
-            id="listbox1-1"
-            aria-selected="true"
-            tabindex="0"
-          >
-            Popularité
-          </button>
-          <button
-            id="toggle-button"
-            class="toggle-button"
-            aria-pressed="false"
-            aria-label="Changer l'ordre du tri"
-          >
-            <img
-              src="assets/icons/arrow-up.svg"
-              alt="Replier le menu"
-              class="arrow-up"
-            />
-            <img
-              src="assets/icons/arrow-down.svg"
-              alt="Déplier le menu"
-              class="arrow-down"
-            />
-          </button>
-        </div>
-        <hr class="separator" aria-hidden="true" />
-        <div
-          class="menu"
-          role="option"
-          id="listbox1-2"
-          tabindex="0"
-          aria-label="Ordered by Date"
-        >
-          Date
-        </div>
-        <hr class="separator" aria-hidden="true" />
-        <div
-          class="menu"
-          role="option"
-          id="listbox1-3"
-          tabindex="0"
-          aria-label="ordered by Title"
-        >
-          Titre
-        </div>
-      </div>
+        class="filter-select">
+        <div class="custom-select">
+        <ul class="filter-list">
+          <li class="filter-item" id="popular">Popularité</li>
+          <li class="filter-item" id="date">Date</li>
+          <li class="filter-item" id="title">Titre</li>
+        </ul>
+        <img class="arrow-down" src="assets/icons/arrow-down.svg" alt="Arrow pointing down"/>
+            </div>
     </div>
     <div class="media-gallery">
       <a href="javascript:void(0)" class="gallery" aria-label="Open gallery"

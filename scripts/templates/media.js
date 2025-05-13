@@ -59,12 +59,3 @@ function mediaTemplate(data, index) {
 
   return { getMediaCardDOM };
 }
-
-// function additionLikes(mediaId) {
-//   const mediaLikes = document.querySelector(
-//     `.media-likes[data-id="${mediaId}"]`
-//   );
-//   const likeNumber = mediaLikes.querySelector(".like-number");
-//   const currentLikes = parseInt(likeNumber.textContent, 10);
-//   likeNumber.textContent = currentLikes + 1;
-// }

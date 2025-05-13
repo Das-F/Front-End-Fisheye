@@ -155,7 +155,7 @@ function setupLikeButtons() {
     if (media) {
       media.likes += 1;
       likeSpan.textContent = `${media.likes} ♥`;
-      likeSpann.setAttribute("aria-label", `likes : ${media.likes} likes`);
+      likeSpan.setAttribute("aria-label", `likes : ${media.likes} likes`);
       updateTotalLikes();
       likedMediaIds.add(mediaId);
     }
