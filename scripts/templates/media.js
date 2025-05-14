@@ -2,7 +2,7 @@ function mediaTemplate(data, index) {
   const { image, video, title, date, likes, photographerId } = data;
 
   const mediaPath = `assets/images/${photographerId}/${image || video}`;
-  console.log(index);
+  // console.log(index);
   function getMediaCardDOM() {
     const galleryLink = document.createElement("div");
     galleryLink.classList.add("gallery");
