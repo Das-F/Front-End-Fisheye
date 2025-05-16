@@ -28,10 +28,16 @@
       <h4 id="filter-label">Trier par</h4>
       <div class="filter-select">
         <div class="custom-select">
-          <ul class="filter-list">
-            <li class="filter-item" id="popular">Popularité</li>
-            <li class="filter-item" id="date">Date</li>
-            <li class="filter-item" id="title">Titre</li>
+          <ul class="filter-list" role="listbox" aria-labelledby="filter-label">
+            <li class="filter-item" id="popular" role="option" tabindex="0">
+              Popularité
+            </li>
+            <li class="filter-item" id="date" role="option" tabindex="0">
+              Date
+            </li>
+            <li class="filter-item" id="title" role="option" tabindex="0">
+              Titre
+            </li>
           </ul>
           <img
             class="arrow-down"
@@ -42,9 +48,7 @@
       </div>
     </div>
     <div class="media-gallery">
-      <a href="javascript:void(0)" class="gallery" aria-label="Open gallery"
-        >Open gallery</a
-      >
+      <a href="javascript:void(0)" class="gallery">Open gallery</a>
     </div>
     <div class="lightbox" aria-label="image closeup view">
       <a
@@ -77,7 +81,12 @@
       <div class="price"></div>
     </div>
     <div id="contact_modal">
-      <div class="modal" role="dialog" aria-label="Contact-me">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Contact-me"
+      >
         <header>
           <h2>Contactez-moi</h2>
           <img
@@ -85,6 +94,7 @@
             src="assets/icons/close.svg"
             alt="Close modal"
             title="Close modal"
+            tabindex="0"
           />
         </header>
         <form>
@@ -115,6 +125,7 @@
       </div>
     </div>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/templates/likes.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/templates/media.js"></script>
     <script src="/scripts/utils/lightbox.js"></script>

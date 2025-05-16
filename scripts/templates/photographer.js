@@ -1,3 +1,5 @@
+/*global document */
+
 function photographerTemplate(data) {
   const { name, portrait, city, country, tagline, price, id } = data;
 

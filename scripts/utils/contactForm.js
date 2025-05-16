@@ -1,3 +1,5 @@
+/*global document, console, FormData, dataPhotographer */
+
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.classList.add("active");
@@ -7,6 +9,11 @@ function displayModal() {
 
   modal.setAttribute("aria-labelledby", "modalTitle");
   modal.setAttribute("aria-hidden", "false");
+
+  const closeInput = document.querySelector(".close");
+  if (closeInput) {
+    closeInput.focus();
+  }
 }
 
 function closeModal() {

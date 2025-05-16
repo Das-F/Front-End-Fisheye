@@ -1,3 +1,6 @@
+/*global document, console, data, fetch, window*/
+/*global photographerId, URLSearchParams */
+
 function getPhotographerIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return parseInt(params.get("id"));
@@ -17,9 +20,9 @@ const buttonSortPopular = document.getElementById("popular");
 buttonSortPopular.addEventListener("click", function () {
   const likes = media.map((media) => {
     return {
+      date: media.date,
       id: media.id,
       likes: media.likes,
-      date: media.date,
       title: media.title,
     };
   });

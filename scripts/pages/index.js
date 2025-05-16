@@ -1,3 +1,5 @@
+/*global fetch, console, document, photographerTemplate */
+
 async function getPhotographers() {
   try {
     const photographerTemplate = await fetch("/data/photographers.json");
@@ -7,7 +9,7 @@ async function getPhotographers() {
   } catch (error) {
     console.error("Erreur de chargement des photographes :", error);
 
-    return { photographers: [] }; // empty list if errorr
+    return { photographers: [] }; // empty list if error
   }
 }
 

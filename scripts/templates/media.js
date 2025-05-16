@@ -1,5 +1,7 @@
+/*global document, openLightbox */
+
 function mediaTemplate(data, index) {
-  const { image, video, title, date, likes, photographerId } = data;
+  const { date, image, title, likes, video, photographerId } = data;
 
   const mediaPath = `assets/images/${photographerId}/${image || video}`;
   // console.log(index);

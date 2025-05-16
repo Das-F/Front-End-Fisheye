@@ -1,3 +1,5 @@
+/*global fetch, document, URLSearchParams, window, console, mediaTemplate */
+
 // --------collecting data from photographer.json--------
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = parseInt(urlParams.get("id"));
@@ -12,16 +14,16 @@ async function getPhotographerById(id) {
     dataPhotographer = photographer;
     allMedias = data.media.filter((m) => m.photographerId === id);
     return {
-      photographer,
       media: data.media.filter((m) => m.photographerId === id),
+      photographer: data.photographers.find((p) => p.id === id),
     };
   } catch (error) {
     console.error("Erreur de chargement des photographes :", error);
-    return { photographer: null, media: [] };
+    return { media: [], photographer: null };
   }
 }
 //-----------------Photographer data------------------//
-async function displayPhotographerData(photographers) {
+function displayPhotographerData(photographers) {
   const photographersSection = document.querySelector(".photograph-header");
   photographersSection.innerHTML = "";
 
@@ -33,7 +35,7 @@ async function displayPhotographerData(photographers) {
 }
 //-----------------Media data------------------//
 async function init() {
-  const { photographer, media } = await getPhotographerById(photographerId);
+  const { media, photographer } = await getPhotographerById(photographerId);
   if (photographer) {
     displayPhotographerData([photographer]);
     displayMediaData(media);
@@ -93,7 +95,7 @@ function photographerTemplate(data) {
 
   return { getUserCardDOM };
 }
-async function displayMediaData(media) {
+function displayMediaData(media) {
   const mediaSection = document.querySelector(".media-gallery");
   mediaSection.innerHTML = "";
 
@@ -137,19 +139,25 @@ function updateTotalLikes() {
 }
 //------------Like buttons------------------//
 function setupLikeButtons() {
-  if (likeButtonsInitialized) return;
+  if (likeButtonsInitialized) {
+    return;
+  }
 
   const galleryContainer = document.querySelector(".media-gallery");
   const likedMediaIds = new Set();
 
   galleryContainer.addEventListener("click", (e) => {
     const likeSpan = e.target.closest(".media-likes");
-    if (!likeSpan) return;
+    if (!likeSpan) {
+      return;
+    }
 
     const mediaId = parseInt(likeSpan.dataset.id, 10);
 
     // Already liked
-    if (likedMediaIds.has(mediaId)) return;
+    if (likedMediaIds.has(mediaId)) {
+      return;
+    }
 
     const media = medias.find((m) => m.id === mediaId);
     if (media) {
@@ -178,9 +186,6 @@ fetch("data/photographers.json")
   });
 //------------------------------------------------//
 //------------Photographer price---------------//
-function getPhotographerIdFromURL() {
-  return parseInt(new URLSearchParams(window.location.search).get("id"), 10);
-}
 
 function displayPhotographerPrice(price) {
   const priceElement = document.querySelector(".price");

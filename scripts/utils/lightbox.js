@@ -1,3 +1,5 @@
+/*global document, console, allMedias*/
+
 const lightbox = document.querySelector(".lightbox");
 
 let currentIndex = 0;
@@ -26,6 +28,14 @@ function openLightbox(index) {
   const closeButton = document.querySelector(".close-lightbox");
   closeButton.addEventListener("click", closeLightbox);
 }
+document.addEventListener("keydown", function (e) {
+  if (
+    (e.key === "Enter" || e.key === " ") &&
+    document.activeElement.dataset.index
+  ) {
+    openLightbox(parseInt(document.activeElement.dataset.index));
+  }
+});
 
 function closeLightbox() {
   const modalLightbox = document.querySelector(".lightbox");
