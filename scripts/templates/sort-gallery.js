@@ -33,7 +33,6 @@ buttonSortPopular.addEventListener("click", function () {
   PopularMedia.sort(function (a, b) {
     return b.likes - a.likes;
   });
-  console.log("clickedPopular");
 });
 
 const buttonSortDate = document.getElementById("date");
@@ -45,7 +44,6 @@ buttonSortDate.addEventListener("click", function () {
   dateMedia.sort(function (a, b) {
     return new Date(b.date) - new Date(a.date);
   });
-  console.log("clickedDate");
 });
 
 const buttonSortTitle = document.getElementById("title");
@@ -57,5 +55,4 @@ buttonSortTitle.addEventListener("click", function () {
   titleMedia.sort(function (a, b) {
     return a.title.localeCompare(b.title);
   });
-  console.log("clickedTitle");
 });

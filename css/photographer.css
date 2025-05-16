@@ -265,8 +265,9 @@ h1 {
 .lightbox-container {
   margin: 20px 50px;
   display: flex;
-  width: 900px;
-  height: 720px;
+  flex-direction: column;
+  width: 800px;
+  height: 698px;
   justify-content: center;
   align-items: center;
   object-fit: cover;
@@ -289,6 +290,10 @@ h1 {
   font-size: 24px;
   font-weight: 400;
   color: #901c1c;
+  margin: 10px;
+  display: flex;
+  justify-content: flex-start;
+  width: 800px;
 }
 
 .media-title-likes {

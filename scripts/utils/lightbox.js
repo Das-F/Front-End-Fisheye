@@ -6,7 +6,6 @@ let currentIndex = 0;
 
 function openLightbox(index) {
   currentIndex = index;
-  console.log(allMedias[index]);
   const media = allMedias[index];
   lightbox.classList.add("active");
   const lightboxContainer = document.querySelector(".lightbox-container");
@@ -25,6 +24,9 @@ function openLightbox(index) {
     mediaElement.setAttribute("src", mediaPath);
   }
   lightboxContainer.innerHTML = `${mediaElement.outerHTML}`;
+  const mediaTitle = document.createElement("h3");
+  mediaTitle.textContent = media.title;
+  lightboxContainer.appendChild(mediaTitle);
   const closeButton = document.querySelector(".close-lightbox");
   closeButton.addEventListener("click", closeLightbox);
 }
@@ -40,7 +42,6 @@ document.addEventListener("keydown", function (e) {
 function closeLightbox() {
   const modalLightbox = document.querySelector(".lightbox");
   modalLightbox.classList.remove("active");
-  modalLightbox.style.display = "none";
   modalLightbox.setAttribute("aria-hidden", "true");
 }
 document.addEventListener("keydown", function (e) {
@@ -63,16 +64,16 @@ function showMedia(index) {
     mediaElement = document.createElement("img");
     mediaElement.setAttribute("src", mediaPath);
     mediaElement.setAttribute("alt", media.title);
-    // mediaTitle = document.createElement("h3");
-    // mediaTitle.textContent = media.title;
-    // lightboxContainer.appendChild(mediaTitle);
   } else {
     mediaElement = document.createElement("video");
     mediaElement.setAttribute("controls", true);
     mediaElement.setAttribute("src", mediaPath);
   }
+  mediaTitle = document.createElement("h3");
+  mediaTitle.textContent = media.title;
 
   lightboxContainer.innerHTML = `${mediaElement.outerHTML}`;
+  lightboxContainer.appendChild(mediaTitle);
 }
 
 document.querySelector(".next-lightbox").addEventListener("click", () => {

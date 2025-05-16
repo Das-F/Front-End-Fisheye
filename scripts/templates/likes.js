@@ -2,7 +2,6 @@
 /*global photographerId, URLSearchParams */
 
 //------------Calculating likes--------//
-let medias = [];
 let likeButtonsInitialized = false;
 
 function getPhotographerIdFromURL() {
