@@ -10,8 +10,6 @@ async function fetchPhotographersData() {
   return await response.json();
 }
 
-// const response = fetchPhotographersData();
-// const photographerId = getPhotographerIdFromUrl();
 const photographer = data.photographers.find(
   (photographer) => photographer.id === photographerId
 );

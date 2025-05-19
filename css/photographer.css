@@ -88,90 +88,33 @@ h1 {
   margin: 10px;
 }
 
-.filter {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  margin: 0px 20px;
-  padding: 10px 20px;
-  background-color: #901c1c;
-  color: white;
-  width: 150px;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-.filter:hover,
-.filter:focus {
-  background-color: #d3573c;
-  color: black;
-}
-
-.menu {
-  margin: 10px;
-  font-weight: 700;
-  font-size: 18px;
-}
-
 .filter-select {
   display: flex;
   flex-direction: column;
   width: 150px;
 }
 
-.filter-separator {
-  width: 130px;
-  height: 0px;
-  background-color: #ffffff;
-  margin-left: 12px;
-}
-
-.custom-select {
+#filter {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0px 10px;
+  padding: 10px 20px;
   background-color: #901c1c;
   color: white;
-  border: none;
-  width: 160px;
-  display: flex;
-  cursor: pointer;
+  width: 150px;
   border-radius: 5px;
-}
-.filter-list {
-  list-style: none;
-  padding: 10px 0px;
-  margin: 0px;
-}
-
-.filter-item {
-  display: flex;
-  justify-content: flex-start;
+  border: 0px solid #901c1c;
   font-size: 18px;
-  font-weight: 700;
-  padding: 10px 0px 10px 20px;
+  cursor: pointer;
+  z-index: 999;
 }
 
-.arrow-down {
-  display: flex;
-  justify-content: flex-start;
-  width: 32px;
-  margin: -80px 0px 0px 10px;
-}
-
-.custom-select:hover {
+#filter:hover,
+#filter:focus {
   background-color: #d3573c;
   color: black;
-}
-
-.material-icons {
-  display: flex;
-  background-color: transparent;
-  color: #ffffff;
-  border: none;
-  height: 32px;
-  width: 32px;
-  cursor: pointer;
-  margin-top: -10px;
 }
 
 .media-card {
@@ -187,7 +130,7 @@ h1 {
   grid-template-columns: repeat(auto-fill, 30% 30% 30%);
   grid-template-rows: repeat(auto-fill, 300px 300px 300px 300px);
   gap: 60px;
-  margin: -65px 60px 40px 60px;
+  margin: 40px 60px 40px 60px;
 }
 
 .media-thumb {

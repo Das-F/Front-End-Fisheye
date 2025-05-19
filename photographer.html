@@ -25,26 +25,14 @@
       <div class="photograph-header"></div>
     </main>
     <div class="media-filters">
-      <h4 id="filter-label">Trier par</h4>
-      <div class="filter-select">
-        <div class="custom-select">
-          <ul class="filter-list" role="listbox" aria-labelledby="filter-label">
-            <li class="filter-item" id="popular" role="option" tabindex="0">
-              Popularité
-            </li>
-            <li class="filter-item" id="date" role="option" tabindex="0">
-              Date
-            </li>
-            <li class="filter-item" id="title" role="option" tabindex="0">
-              Titre
-            </li>
-          </ul>
-          <img
-            class="arrow-down"
-            src="assets/icons/arrow-down.svg"
-            alt="Arrow pointing down"
-          />
-        </div>
+      <h4 id="filter-by">Trier par</h4>
+      <form class="filter-select">
+        <select id="filter" aria-labelledby="filter-label">
+          <option value="popular">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </form>
       </div>
     </div>
     <div class="media-gallery">
