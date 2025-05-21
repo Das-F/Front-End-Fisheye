@@ -82,16 +82,16 @@ h1 {
   position: relative;
   z-index: 900;
 }
-.media-filters h4 {
-  display: flex;
-  justify-content: flex-start;
-  margin: 10px;
-}
 
 .filter-select {
   display: flex;
-  flex-direction: column;
-  width: 150px;
+  flex-direction: row;
+  width: 300px;
+}
+#filter-label {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5px 10px 5px 0px;
 }
 
 #filter {
@@ -130,7 +130,7 @@ h1 {
   grid-template-columns: repeat(auto-fill, 30% 30% 30%);
   grid-template-rows: repeat(auto-fill, 300px 300px 300px 300px);
   gap: 60px;
-  margin: 40px 60px 40px 60px;
+  margin: 40px 50px 40px 50px;
 }
 
 .media-thumb {
