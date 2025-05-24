@@ -75,7 +75,9 @@ function photographerTemplate(data) {
     contactButton.classList.add("contact_button");
     contactButton.textContent = "Contactez-moi";
     contactButton.setAttribute("aria-label", "Contact me");
-    contactButton.setAttribute("onclick", "displayModal()");
+    contactButton.addEventListener("click", () => {
+      displayModal();
+    });
     contactButton.setAttribute("tabindex", "0");
     const imgContainer = document.createElement("div");
     imgContainer.classList.add("img-container");
@@ -101,7 +103,6 @@ function displayMediaData(media) {
 
   media.forEach((mediaItem, index) => {
     const mediaCard = mediaTemplate(mediaItem, index);
-    // console.log(index);
     const mediaCardDOM = mediaCard.getMediaCardDOM();
     mediaSection.appendChild(mediaCardDOM);
   });

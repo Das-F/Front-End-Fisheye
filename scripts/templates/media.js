@@ -1,10 +1,9 @@
 /*global document, openLightbox */
 
-function mediaTemplate(data, index) {
+function mediaTemplate(data, index, mediaList) {
   const { date, image, title, likes, video, photographerId } = data;
 
   const mediaPath = `assets/images/${photographerId}/${image || video}`;
-  // console.log(index);
   function getMediaCardDOM() {
     const galleryLink = document.createElement("div");
     galleryLink.classList.add("gallery");
@@ -25,7 +24,7 @@ function mediaTemplate(data, index) {
       mediaElement.setAttribute("src", mediaPath);
     }
     mediaElement.addEventListener("click", function () {
-      openLightbox(index);
+      openLightbox(index, mediaList);
     });
 
     mediaElement.classList.add("media-thumb");

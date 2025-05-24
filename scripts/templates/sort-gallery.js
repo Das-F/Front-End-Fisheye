@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function displayMedia(mediaList) {
     mediaSection.innerHTML = "";
     mediaList.forEach((mediaItem, index) => {
-      const mediaCard = mediaTemplate(mediaItem, index);
+      const mediaCard = mediaTemplate(mediaItem, index, mediaList);
       mediaSection.appendChild(mediaCard.getMediaCardDOM());
     });
   }

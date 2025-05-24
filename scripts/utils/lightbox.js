@@ -1,12 +1,12 @@
 /*global document, console, allMedias*/
 
 const lightbox = document.querySelector(".lightbox");
+let currentMediaList = [];
 
-let currentIndex = 0;
-
-function openLightbox(index) {
+function openLightbox(index, mediaList) {
   currentIndex = index;
-  const media = allMedias[index];
+  currentMediaList = mediaList || allMedias;
+  const media = currentMediaList[index];
   lightbox.classList.add("active");
   const lightboxContainer = document.querySelector(".lightbox-container");
   const mediaPath = `assets/images/${media.photographerId}/${
@@ -51,8 +51,8 @@ document.addEventListener("keydown", function (e) {
 });
 
 function showMedia(index) {
-  currentIndex = (index + allMedias.length) % allMedias.length;
-  const media = allMedias[currentIndex];
+  currentIndex = (index + currentMediaList.length) % currentMediaList.length;
+  const media = currentMediaList[index];
   const mediaPath = `assets/images/${media.photographerId}/${
     media.image || media.video
   }`;
