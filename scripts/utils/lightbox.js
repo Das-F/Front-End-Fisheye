@@ -1,8 +1,8 @@
-/*global document, console, allMedias*/
-
+// === Lightbox Setup === //
 const lightbox = document.querySelector(".lightbox");
 let currentMediaList = [];
 
+// === Open Lightbox and Display Media === //
 function openLightbox(index, mediaList) {
   currentIndex = index;
   currentMediaList = mediaList || allMedias;
@@ -30,6 +30,8 @@ function openLightbox(index, mediaList) {
   const closeButton = document.querySelector(".close-lightbox");
   closeButton.addEventListener("click", closeLightbox);
 }
+
+// === Open Lightbox with Keyboard (Enter or Space) === //
 document.addEventListener("keydown", function (e) {
   if (
     (e.key === "Enter" || e.key === " ") &&
@@ -39,6 +41,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// === Close Lightbox === //
 function closeLightbox() {
   const modalLightbox = document.querySelector(".lightbox");
   modalLightbox.classList.remove("active");
@@ -50,9 +53,14 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// === Display Media by Index === //
 function showMedia(index) {
   currentIndex = (index + currentMediaList.length) % currentMediaList.length;
-  const media = currentMediaList[index];
+  const media = currentMediaList[currentIndex];
+  if (!media) {
+    console.error("Media non trouvé à l'index :", currentIndex);
+    return;
+  }
   const mediaPath = `assets/images/${media.photographerId}/${
     media.image || media.video
   }`;
@@ -76,6 +84,7 @@ function showMedia(index) {
   lightboxContainer.appendChild(mediaTitle);
 }
 
+// === Navigation Buttons (Next / Previous) === //
 document.querySelector(".next-lightbox").addEventListener("click", () => {
   showMedia(currentIndex + 1);
 });
@@ -83,6 +92,8 @@ document.querySelector(".next-lightbox").addEventListener("click", () => {
 document.querySelector(".prev-lightbox").addEventListener("click", () => {
   showMedia(currentIndex - 1);
 });
+
+// === Keyboard Events for Lightbox === //
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     closeLightbox();

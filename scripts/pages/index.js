@@ -1,5 +1,4 @@
-/*global fetch, console, document, photographerTemplate */
-
+// === Fetch Photographer Data ===//
 async function getPhotographers() {
   try {
     const photographerTemplate = await fetch("/data/photographers.json");
@@ -9,10 +8,11 @@ async function getPhotographers() {
   } catch (error) {
     console.error("Erreur de chargement des photographes :", error);
 
-    return { photographers: [] }; // empty list if error
+    return { photographers: [] };
   }
 }
 
+// === Display Photographer Cards in DOM ===//
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
@@ -22,11 +22,10 @@ async function displayData(photographers) {
     photographersSection.appendChild(userCardDOM);
   });
 }
-
+// === Init Page ===//
 async function init() {
-  // get datas photographers
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }
-
+// === Launch Script ===//
 init();

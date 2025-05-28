@@ -1,10 +1,12 @@
-/*global document, openLightbox */
-
+// === Media Card Factory Function === //
 function mediaTemplate(data, index, mediaList) {
   const { date, image, title, likes, video, photographerId } = data;
 
   const mediaPath = `assets/images/${photographerId}/${image || video}`;
+
+  // === Create and Return Media Card DOM === //
   function getMediaCardDOM() {
+    // Media container //
     const galleryLink = document.createElement("div");
     galleryLink.classList.add("gallery");
     galleryLink.setAttribute("aria-label", title);
@@ -12,6 +14,7 @@ function mediaTemplate(data, index, mediaList) {
     galleryLink.setAttribute("role", "button");
     galleryLink.setAttribute("data-index", index);
 
+    // Media (image or video) //
     let mediaElement;
     if (image) {
       mediaElement = document.createElement("img");
@@ -30,6 +33,7 @@ function mediaTemplate(data, index, mediaList) {
     mediaElement.classList.add("media-thumb");
     galleryLink.appendChild(mediaElement);
 
+    // Media title and likes section //
     const mediaTitleAndLikes = document.createElement("div");
     mediaTitleAndLikes.classList.add("media-title-likes");
 

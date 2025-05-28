@@ -1,10 +1,10 @@
-/*global fetch, document, URLSearchParams, window, console, mediaTemplate */
-
-// --------collecting data from photographer.json--------
+// === Retrieve photographer ID from URL === //
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = parseInt(urlParams.get("id"));
 let dataPhotographer = {};
 let allMedias = [];
+
+// === Fetch photographer data and their media === //
 async function getPhotographerById(id) {
   try {
     const response = await fetch("/data/photographers.json");
@@ -22,7 +22,7 @@ async function getPhotographerById(id) {
     return { media: [], photographer: null };
   }
 }
-//-----------------Photographer data------------------//
+// === Display photographer information === //
 function displayPhotographerData(photographers) {
   const photographersSection = document.querySelector(".photograph-header");
   photographersSection.innerHTML = "";
@@ -33,7 +33,7 @@ function displayPhotographerData(photographers) {
     photographersSection.appendChild(userCardDOM);
   });
 }
-//-----------------Media data------------------//
+// == Initialize page: load and display data === //
 async function init() {
   const { media, photographer } = await getPhotographerById(photographerId);
   if (photographer) {
@@ -43,10 +43,9 @@ async function init() {
     console.error("Photographe introuvable.");
   }
 }
-
 init();
-//--------------------------------------------------//
-//-----------------Media template------------------//
+
+// === Create photographer DOM (template) === //
 function photographerTemplate(data) {
   const { name, portrait, city, country, tagline } = data;
   const picture = `assets/photographers/${portrait}`;
@@ -97,6 +96,7 @@ function photographerTemplate(data) {
 
   return { getUserCardDOM };
 }
+// === Display photographer's media === //
 function displayMediaData(media) {
   const mediaSection = document.querySelector(".media-gallery");
   mediaSection.innerHTML = "";

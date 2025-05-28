@@ -1,14 +1,13 @@
-/*global document, fetch, mediaTemplate, window*/
-/*global photographerId, URLSearchParams */
-
-//------------Calculating likes--------//
+// === Initialize Likes Feature ===//
 let likeButtonsInitialized = false;
 
+// === Get Photographer ID from URL === //
 function getPhotographerIdFromURL() {
   const params = new URLSearchParams(window.location.search);
   return parseInt(params.get("id"), 10);
 }
 
+// === Display Media Gallery === //
 function displayGallery(medias) {
   const galleryContainer = document.querySelector(".media-gallery");
   galleryContainer.innerHTML = "";
@@ -22,7 +21,7 @@ function displayGallery(medias) {
     galleryContainer.appendChild(mediaCard);
   });
 }
-
+// === Update Total Likes Display === //
 function updateTotalLikes() {
   const total = medias.reduce((sum, media) => sum + media.likes, 0);
   const totalLikesElement = document.querySelector(".likes");
@@ -30,7 +29,7 @@ function updateTotalLikes() {
     totalLikesElement.innerHTML = `${total} ♥`;
   }
 }
-//------------Like buttons------------------//
+// === Setup Like Button Interaction === //
 function setupLikeButtons() {
   if (likeButtonsInitialized) {
     return;
@@ -47,7 +46,7 @@ function setupLikeButtons() {
 
     const mediaId = parseInt(likeSpan.dataset.id, 10);
 
-    // Already liked
+    // Prevent duplicate likes //
     if (likedMediaIds.has(mediaId)) {
       return;
     }
@@ -64,22 +63,20 @@ function setupLikeButtons() {
   likeButtonsInitialized = true;
 }
 
-//------------Fetching data from JSON--------------//
+// === Fetch and Display Media + Likes === //
 fetch("data/photographers.json")
   .then((response) => response.json())
   .then((data) => {
     const photographerId = getPhotographerIdFromURL();
 
-    // Ne garder que les médias du photographe courant
     medias = data.media.filter((m) => m.photographerId === photographerId);
 
     displayGallery(medias);
     setupLikeButtons();
     updateTotalLikes();
   });
-//------------------------------------------------//
-//------------Photographer price---------------//
 
+// === Display Photographer's Daily Price ===
 function displayPhotographerPrice(price) {
   const priceElement = document.querySelector(".price");
   if (priceElement) {
@@ -88,6 +85,7 @@ function displayPhotographerPrice(price) {
   }
 }
 
+// === Fetch and Display Photographer Info + Price === //
 fetch("data/photographers.json")
   .then((response) => response.json())
   .then((data) => {

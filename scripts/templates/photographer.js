@@ -1,14 +1,13 @@
-/*global document */
-
+// === Photographer Template Factory ===
 function photographerTemplate(data) {
   const { name, portrait, city, country, tagline, price, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
+  // === Create Photographer Card DOM ===
   function getUserCardDOM() {
     const article = document.createElement("article");
 
-    // Creation link - image + name
     const link = document.createElement("a");
     link.setAttribute("href", `photographer.html?id=${id}`);
     link.setAttribute("aria-label", `${name}`);
@@ -27,10 +26,8 @@ function photographerTemplate(data) {
     const h2 = document.createElement("h2");
     h2.textContent = name;
     link.appendChild(h2);
-    // Add link in article
     article.appendChild(link);
 
-    // Block complementary informations
     const infos = document.createElement("div");
     infos.classList.add("photographer-infos");
 
@@ -48,5 +45,6 @@ function photographerTemplate(data) {
 
     return article;
   }
+  // Return object with data and methods
   return { name, picture, getUserCardDOM };
 }
