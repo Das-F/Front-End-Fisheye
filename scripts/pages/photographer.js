@@ -24,7 +24,7 @@ async function getPhotographerById(id) {
 }
 // === Display photographer information === //
 function displayPhotographerData(photographers) {
-  const photographersSection = document.querySelector(".photograph-header");
+  const photographersSection = document.querySelector(".photograph-card");
   photographersSection.innerHTML = "";
 
   photographers.forEach((photographer) => {

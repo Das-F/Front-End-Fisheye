@@ -25,6 +25,7 @@ function mediaTemplate(data, index, mediaList) {
       mediaElement = document.createElement("video");
       mediaElement.setAttribute("controls", true);
       mediaElement.setAttribute("src", mediaPath);
+      mediaElement.setAttribute("aria-label", title);
     }
     mediaElement.addEventListener("click", function () {
       openLightbox(index, mediaList);

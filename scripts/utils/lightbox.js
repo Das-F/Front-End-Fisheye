@@ -76,6 +76,7 @@ function showMedia(index) {
     mediaElement = document.createElement("video");
     mediaElement.setAttribute("controls", true);
     mediaElement.setAttribute("src", mediaPath);
+    mediaElement.setAttribute("aria-label", media.title);
   }
   mediaTitle = document.createElement("h3");
   mediaTitle.textContent = media.title;

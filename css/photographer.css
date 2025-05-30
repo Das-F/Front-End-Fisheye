@@ -25,7 +25,7 @@ h1 {
   margin-left: 50px;
 }
 
-.photograph-header {
+.photograph-card {
   background-color: #fafafa;
   height: 300px;
   margin: 0 50px;
@@ -36,7 +36,7 @@ h1 {
   align-items: center;
 }
 
-.photograph-header h2 {
+.photograph-card h2 {
   color: #d3573c;
   font-size: 64px;
   font-weight: 400;
@@ -44,13 +44,13 @@ h1 {
   margin-bottom: 0;
 }
 
-.photograph-header h3 {
+.photograph-card h3 {
   color: #901c1c;
   font-size: 24px;
   margin: 10px 0px;
 }
 
-.photograph-header h4 {
+.photograph-card h4 {
   font-weight: 400;
   font-size: 18px;
   margin: 10px 0px;
@@ -63,7 +63,7 @@ h1 {
   overflow: hidden;
 }
 
-.photograph-header img {
+.photograph-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
