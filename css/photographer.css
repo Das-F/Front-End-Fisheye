@@ -4,9 +4,7 @@ body {
   max-width: 1440px;
   box-sizing: border-box;
 }
-
-/* Photograph Header */
-
+/* Header */
 header {
   display: flex;
   flex-direction: row;
@@ -14,7 +12,7 @@ header {
   align-items: center;
   height: 90px;
 }
-
+/* Photograph Card */
 h1 {
   color: #901c1c;
   margin-right: 100px;
@@ -36,7 +34,7 @@ h1 {
   align-items: center;
 }
 
-.photograph-card h2 {
+.photograph-card h1 {
   color: #d3573c;
   font-size: 64px;
   font-weight: 400;

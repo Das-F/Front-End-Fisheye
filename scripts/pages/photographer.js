@@ -57,8 +57,8 @@ function photographerTemplate(data) {
     photographerInfo.classList.add("photographer-info");
     photographerInfo.setAttribute("aria-label", name);
 
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
+    const h1 = document.createElement("h1");
+    h1.textContent = name;
 
     const h3 = document.createElement("h3");
     h3.textContent = `${city}, ${country}`;
@@ -66,7 +66,7 @@ function photographerTemplate(data) {
     const h4 = document.createElement("h4");
     h4.textContent = tagline;
 
-    photographerInfo.appendChild(h2);
+    photographerInfo.appendChild(h1);
     photographerInfo.appendChild(h3);
     photographerInfo.appendChild(h4);
 

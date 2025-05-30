@@ -16,6 +16,7 @@ function displayGallery(medias) {
     const mediaCard = mediaTemplate(media, index).getMediaCardDOM();
 
     const likeSpan = mediaCard.querySelector(".media-likes");
+
     likeSpan.dataset.id = media.id;
 
     galleryContainer.appendChild(mediaCard);
@@ -60,6 +61,31 @@ function setupLikeButtons() {
       likedMediaIds.add(mediaId);
     }
   });
+
+  galleryContainer.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      const likeSpan = e.target.closest(".media-likes");
+      e.preventDefault();
+      if (!likeSpan) return;
+
+      const mediaId = parseInt(likeSpan.dataset.id, 10);
+
+      // Prevent duplicate likes //
+      if (likedMediaIds.has(mediaId)) {
+        return;
+      }
+
+      const media = medias.find((m) => m.id === mediaId);
+      if (media) {
+        media.likes += 1;
+        likeSpan.textContent = `${media.likes} ♥`;
+        likeSpan.setAttribute("aria-label", `likes : ${media.likes} likes`);
+        updateTotalLikes();
+        likedMediaIds.add(mediaId);
+      }
+    }
+  });
+
   likeButtonsInitialized = true;
 }
 

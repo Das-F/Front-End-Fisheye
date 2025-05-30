@@ -44,6 +44,9 @@ function mediaTemplate(data, index, mediaList) {
 
     const mediaLikes = document.createElement("span");
     mediaLikes.classList.add("media-likes");
+    mediaLikes.setAttribute("tabindex", "0");
+    mediaLikes.setAttribute("aria-label", `likes : ${likes} likes`);
+
     mediaLikes.dataset.id = data.id;
     mediaLikes.setAttribute("aria-label", "likes");
     mediaLikes.innerHTML = `
