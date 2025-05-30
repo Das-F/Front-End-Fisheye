@@ -1,7 +1,3 @@
-#contact_modal {
-  display: none;
-}
-
 body {
   font-family: "DM Sans", sans-serif;
   margin: auto;
@@ -179,7 +175,6 @@ h1 {
 
 .next-lightbox,
 .prev-lightbox {
-  background: url("assets/icons/arrow.svg") no-repeat center center;
   background-size: contain;
   position: absolute;
   border: none;
@@ -303,6 +298,10 @@ h1 {
 }
 
 /* Contact Modal */
+#contact_modal {
+  display: none;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;

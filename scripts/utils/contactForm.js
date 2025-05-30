@@ -16,7 +16,7 @@ function displayModal() {
 
   const btnSubmit = document.querySelector(".btn-submit");
   if (btnSubmit) {
-    btnSubmit.addEventListener("click", () => {
+    btnSubmit.addEventListener("click" || "Enter", () => {
       const formData = {
         first: document.getElementById("first").value,
         last: document.getElementById("last").value,
