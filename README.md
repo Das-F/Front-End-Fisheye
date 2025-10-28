@@ -1,4 +1,4 @@
-# 🐟 Fisheye — Projet Front-End (Site de photographe)
+# 🐟 Fisheye — Projet Front-End (Site de photographes)
 
 **Fisheye** est un projet du parcours Développeur Front-End OpenClassrooms (Projet 6).  
 Il s'agit d'une interface web interactive pour présenter un photographe et ses galeries, avec tri, filtrage et lightbox.
